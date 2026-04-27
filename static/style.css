@@ -205,3 +205,35 @@ li::before {
     left: 0;
     color: var(--accent);
 }
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column; /* Stack image on top of text */
+        text-align: center;
+        gap: 2rem;
+        padding: 3rem 0;
+    }
+
+    .profile-pic {
+        width: 140px; /* Slightly smaller for mobile */
+        height: 140px;
+    }
+
+    .header-text h1 {
+        font-size: 1.8rem; /* Shrink text to fit screen width */
+    }
+
+    .actions {
+        justify-content: center;
+        flex-direction: column; /* Stack buttons vertically */
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr; /* Force one card per row */
+    }
+
+    main {
+        padding: 0 1.2rem; /* Add breathing room on the edges */
+    }
+}
