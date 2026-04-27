@@ -1,0 +1,207 @@
+:root {
+    --bg: #0f111a;
+    --fg: #e6edf3;
+    --accent: #58a6ff;
+    --card-bg: #161b22;
+    --border: #30363d;
+}
+
+
+section {
+    margin-bottom: 3.5rem; /* Space after each section */
+}
+
+/* Optional: If you want specific spacing between the heading and the content inside the section */
+section h2 {
+    margin-bottom: 2rem;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    padding: 5rem 0;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.profile-meta {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid var(--accent);
+    object-fit: cover;
+}
+
+.header-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.header-text p {
+    font-size: 1.1rem;
+    color: var(--fg);
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.btn {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.btn.primary {
+    background-color: #74b9ff; /* Specific Gin-style light blue */
+    color: #0f111a !important;
+    padding: 0.8rem 2rem;
+    border-radius: 12px; /* Pill/Rounded square mix */
+}
+
+.btn.primary:hover {
+    background-color: #58a6ff;
+    transform: scale(1.02);
+}
+
+.btn.secondary {
+    color: var(--fg) !important;
+    background: transparent;
+    border: 1.5px solid var(--border);
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+}
+
+.btn.secondary:hover {
+    border-color: var(--accent);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+}
+
+main {
+    max-width: 1100px; /* Increased from 800px */
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+h1, h2, h3, h4 { color: var(--accent); }
+
+.project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Spacing cleanup for the main grid */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;           /* Tightened from 2rem */
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.repo-link {
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.repo-link:hover {
+    background: rgba(88, 166, 255, 0.1);
+    border-color: var(--accent);
+}
+
+/* Container to stack them or grid them */
+.mini-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* REDUCE the bloat: Keep them small and consistent */
+.project-card.mini {
+    flex: 0 1 320px;       /* Don't grow beyond 320px, but can shrink */
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;   /* Center items vertically */
+}
+
+.project-card.mini .card-header {
+    width: 100%;           /* Ensure space-between works inside the flex card */
+    margin-bottom: 0;      /* Remove bottom margin since there's no <p> text */
+}
+
+.project-card.mini h4 {
+    font-size: 0.95rem;    /* Smaller font */
+    margin: 0;
+}
+
+.project-card.mini .repo-link {
+    font-size: 0.75rem;    /* Tighten the link button */
+    padding: 0.2rem 0.5rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
