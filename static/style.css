@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     --bg: #0f111a;
     --fg: #e6edf3;
@@ -6,9 +10,9 @@
     --border: #30363d;
 }
 
-
 section {
     margin-bottom: 3.5rem; /* Space after each section */
+    scroll-margin-top: 5rem;
 }
 
 /* Optional: If you want specific spacing between the heading and the content inside the section */
@@ -39,6 +43,16 @@ section h2 {
     object-fit: cover;
 }
 
+.user-name {
+    color: var(--accent);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
 .header-text h1 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
@@ -55,7 +69,7 @@ section h2 {
 .actions {
     display: flex;
     gap: 1rem;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
 }
 
 .btn {
@@ -66,10 +80,11 @@ section h2 {
 }
 
 .btn.primary {
-    background-color: #74b9ff; /* Specific Gin-style light blue */
+    background-color: var(--accent); /* Use your blue variable */
     color: #0f111a !important;
-    padding: 0.8rem 2rem;
-    border-radius: 12px; /* Pill/Rounded square mix */
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    border: none;
 }
 
 .btn.primary:hover {
@@ -78,18 +93,18 @@ section h2 {
 }
 
 .btn.secondary {
-    color: var(--fg) !important;
     background: transparent;
-    border: 1.5px solid var(--border);
-    padding: 0.8rem 2rem;
+    color: var(--fg) !important;
+    border: 1px solid var(--border);
+    padding: 0.8rem 1.8rem;
     border-radius: 8px;
 }
 
 .btn.secondary:hover {
     border-color: var(--accent);
-    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--accent) !important;
+    background: rgba(88, 166, 255, 0.05);
 }
-
 body {
     background-color: var(--bg);
     color: var(--fg);
@@ -100,9 +115,45 @@ body {
 }
 
 nav {
-    padding: 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(15, 17, 26, 0.95); /* Matches --bg with slight transparency */
+    backdrop-filter: blur(8px); /* Modern blur effect */
     border-bottom: 1px solid var(--border);
-    background: var(--bg);
+    padding: 1rem 2rem;
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-weight: 800;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--fg);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
 }
 
 main {
@@ -208,32 +259,80 @@ li::before {
 
 /* Mobile Optimization */
 @media (max-width: 768px) {
+    /* Header Fixes */
     .profile-header {
-        flex-direction: column; /* Stack image on top of text */
+        flex-direction: column;
         text-align: center;
-        gap: 2rem;
-        padding: 3rem 0;
+        gap: 1.5rem;
+        padding: 2rem 0;
     }
 
     .profile-pic {
-        width: 140px; /* Slightly smaller for mobile */
-        height: 140px;
+        width: 200px;
+        height: 200px;
     }
 
     .header-text h1 {
-        font-size: 1.8rem; /* Shrink text to fit screen width */
+        font-size: 1.6rem;
     }
 
     .actions {
-        justify-content: center;
-        flex-direction: column; /* Stack buttons vertically */
+            flex-direction: column;
+            width: 100%;
+        }
+
+    .btn {
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+    /* Grid Fix: Force single column and override minmax */
+    .project-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
     }
 
-    .project-grid {
-        grid-template-columns: 1fr; /* Force one card per row */
+    /* Card Fixes: Fix the stacking and alignment */
+    .project-card {
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .card-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .card-header h3 {
+        font-size: 1.25rem;
+        margin: 0;
+    }
+
+    .repo-link {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem;
+        box-sizing: border-box; /* Ensures padding doesn't break width */
+    }
+
+    .project-card p {
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
     }
 
     main {
-        padding: 0 1.2rem; /* Add breathing room on the edges */
+        padding: 0 1rem;
     }
+
+    .nav-links {
+            gap: 1rem;
+        }
+
+        .nav-container {
+            padding: 0;
+        }
 }
